@@ -13,7 +13,7 @@ Rax学习手册
 
 
 
-#### （1）编译器以及配套工具
+### （1）编译器以及配套工具
 
 ​        Rax的[Git主页](https://github.com/alibaba/rax)，提供npm包，即rax-cli。安装rax-cli后，可以使用rax命令来生成rax项目所需要一些文件（所谓的脚手架方式）以及编译、运行等。
 
@@ -37,7 +37,7 @@ $ npm run start
 
 
 
-#### （2）了解Rax语法
+### （2）了解Rax语法
 
 举一个Rax代码的例子，如下
 
@@ -104,7 +104,17 @@ render(<Hello name="world" />);
 
 
 
-#### （3）支持Rax代码的客户端SDK
+### （3）前端开发知识
+
+Rax实际是前端一个框架，因此需要前端一些开发知识。大致有下面几个方面
+
+* HTML，常用标签，比如div
+* CSS，CSS用法以及flexbox等
+* JavaScript，JS开发
+
+
+
+### （4）支持Rax代码的客户端SDK
 
 如果Rax编写的页面，也需要呈现在App上，那么客户端（iOS或Android）需要集成WeexSDK
 
@@ -122,7 +132,7 @@ Rax和React类似，但是不清楚React也没有关系，直接介绍Rax开发�
 
 
 
-#### （1）组件 (Component)
+### （1）组件 (Component)
 
 组件是可复用的UI单元，比如Rax内置提供的Text、Image等。
 
@@ -157,7 +167,7 @@ Hello函数带一个props参数，直接返回Hello组件的内容。
 
 
 
-#### （2）属性 (Props)
+### （2）属性 (Props)
 
 组件（component）内部会维护一个props变量，用于传递组件的属性。例如之前的例子，如下
 
@@ -174,7 +184,7 @@ render(<Hello name="World" />);
 
 
 
-#### （3）状态（State）
+### （3）状态（State）
 
 状态（State），可以认为是class内部通用的Props，因为props变量组件默认存在，而state是自定义增加的内部变量。
 
@@ -217,7 +227,7 @@ render(<Clock />);
 
 
 
-#### （4）事件 (Event)
+### （4）事件 (Event)
 
 事件（Event），指的是用户的交互以及特定的时机，包括点击事件、UI元素Appear事件、滚动事件、用户输入事件、复杂手势事件等。
 
@@ -342,7 +352,7 @@ render(<EventTextInput />);
 
 
 
-#### （5）样式 (CSS)
+### （5）样式 (CSS)
 
 * 内嵌CSS样式
 
