@@ -1,15 +1,15 @@
 Rax学习手册
---
+==
 
 [TOC]
 
-### 1、Rax是什么（重新修改）
+## 1、Rax是什么（TODO重新修改）
 
 按照小白方式去解释，Rax是一个高级的前端语言，这种语言的代码，需要经过编译器来生成JavaScript代码以及HTML代码。用它来开发页面，既能适配Web浏览器（PC或移动端），也能适配App页面（iOS或Android）。
 
 
 
-### 2、使用Rax需要哪些东西
+## 2、使用Rax需要哪些东西
 
 
 
@@ -110,7 +110,7 @@ render(<Hello name="world" />);
 
 
 
-### 3、Rax的几个概念
+## 3、Rax的几个概念
 
 Rax和React类似，但是不清楚React也没有关系，直接介绍Rax开发需要的几个概念。这些概念会体现Rax代码上。
 
@@ -413,13 +413,13 @@ index.css
 >
 外部CSS样式，允许中划线，例如background-color
 
-### 4、Rax语法
+## 4、Rax语法(TODO)
 
 
 
 
 
-### 5、Rax组件
+## 5、Rax组件
 
 #### （1）安装组件
 
@@ -510,7 +510,7 @@ render(<NetworkJSONP />);
 
 
 
-### 6、Rax项目构成
+## 6、Rax项目构成
 
 使用rax-cli提供的rax命令，`rax init <project name>`，初始化一个Rax项目，如下
 
@@ -580,7 +580,7 @@ rax git:(daily/0.0.1) ✗ tree -L 2
 
 
 
-### 7、node.js相关知识
+## 7、node.js相关知识(TODO删除)
 
 node.js的包管理器是npm，MacOS下可以使用brew安装，`brew install npm`。
 
@@ -614,7 +614,7 @@ $ npm install crypto-browserify@3.11.0 --save
 
 
 
-### 8、rax编译常见报错
+## 8、rax编译常见报错
 
 * styles命名冲突
 
@@ -664,6 +664,21 @@ ERROR in ./src/pages/17_control_qrcode/index.js
     
     ✖ 1 problem (1 error, 0 warnings)
 ```
+
+
+
+## 附录
+
+### 1、rax常用命令
+
+| 命令                                 | 用法            | 说明                           |
+| ------------------------------------ | --------------- | ------------------------------ |
+| `rax init <ProjectName> [--verbose]` | 创建一个rax工程 | 可以不填工程名，进入交互式环境 |
+|                                      |                 |                                |
+
+
+
+
 
 
 
