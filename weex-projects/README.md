@@ -1,4 +1,4 @@
-# HelloWeex
+# Weex Notes
 [TOC]
 
 ## 1、Weex介绍
@@ -244,7 +244,7 @@ WeexSDK初始化只需一次。
 
 
 
-### （1）组件
+### （1）组件（component）
 
 Weex组件（component）对应的是DSL的标签。Weex有下面一些内置组件[^3]。
 
@@ -268,6 +268,121 @@ Weex组件（component）对应的是DSL的标签。Weex有下面一些内置组
 
 
 
+### （2）模块（module）
+
+Weex模块（后面称**Weex module**），是native端向WeexSDK注册一个类，并把一些native方法暴露给前端使用。
+
+官方提供的Weex module注册流程[^4]，如下
+
+![](images/Weex module注册流程.png)
+
+根据上面流程，可见weex module涉及到native和JS框架两部分。
+
+
+
+#### a. native实现weex module
+
+​       iOS上实现weex module，需要两个步骤：定义Weex Module类，注册Weex Module类
+
+##### 1. 定义Weex Module类
+
+​       Weex Module类实现`WXModuleProtocol`协议，使用`WX_EXPORT_METHOD`宏将需要暴露给JS框架的方法（后面称为**Weex module方法**）标记出来。
+
+举个例子，如下
+
+```objective-c
+@interface MyCustomWeexModule : NSObject <WXModuleProtocol>
+@end
+    
+@implementation MyCustomWeexModule
+
+WX_EXPORT_METHOD(@selector(showParam:callback:))
+- (void)showParam:(NSString *)param callback:(WXModuleKeepAliveCallback)callback {
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    formatter.dateStyle = NSDateFormatterShortStyle;
+    formatter.timeStyle = NSDateFormatterShortStyle;
+    NSLog(@"%@ (%@): %@", self, NSStringFromSelector(_cmd), param);
+    NSString *string = [NSString stringWithFormat:@"iOS on %@", [formatter stringFromDate:[NSDate date]]];
+    callback(string, YES);
+}
+
+@end
+```
+
+几点说明
+
+* WX_EXPORT_METHOD宏，实际上，定义了一个类方法，返回NSStringFromSelector(@selector(...))。
+
+* Weex module方法的签名，有一定的约定
+
+  * 可以有0或多个入参，通过该参数可以接收JS框架传递的数据。
+
+  * 返回值通常是void。如果返回值不是void，JS框架并不使用这个返回值。
+
+  * 如果native需要传数据给JS框架，可以使用WeexSDK提供`WXModuleKeepAliveCallback`类型的block，该有类型有两个参数，`id result`和`BOOL keepAlive`。
+
+    > 1. result可以是string或者map，JS框架接收这两个类型
+    >
+    > 2. keepAlive，如果是YES，该block仅在weex instance释放时才销毁。如果是NO，该block每次调用后销毁
+    > 3. 另外，回调类型还有`WXModuleCallback`，仅有一个参数`id result`，该block每次都会销毁[^5]
+
+
+
+##### 2. 注册Weex Module类
+
+​       使用WXSDKEngine的`+[WXSDKEngine registerModule:withClass:]`方法注册Weex Module类。定义module名字，这个名字在JS框架会使用。
+
+举个例子
+
+```objective-c
+[WXSDKEngine registerModule:@"event" withClass:[MyCustomWeexModule class]];
+```
+
+
+
+#### b. JS框架导入module
+
+使用`require('@weex-module/<module name>')`导入native定义好的module。
+
+以rax框架为例，举个例子，如下
+
+```react
+var myWeexModule = require('@weex-module/event');
+
+class App extends Component {
+  state = {
+    source: null
+  }
+
+  componentWillMount() {
+    myWeexModule.showParam('A param string from JS', (response) => {
+      this.setState({
+        source: response
+      })
+      console.log('test: ' + response);
+    });
+  }
+
+  render() {
+    return (
+      <View style={styles.app} data-spm-protocol="i">
+        <View style={styles.appHeader}>
+          <Text style={styles.appBanner}>Hello Rax from { this.state.source }</Text>
+        </View>
+        <Text style={styles.appIntro}>
+          To get started, edit src/pages/index.js and save to reload.
+        </Text>
+      </View>
+    );
+  }
+}
+```
+
+说明
+
+> 1. JS框架的console.log方法在native console上以`2019-01-15 21:28:04.578052+0800 HelloWeex[34440:641597] <Weex>[log]WXJSCoreBridge.m:145, jsLog: XXX`形式打印出来，可以搜索jsLog关键词
+> 2. 示例代码见HelloWeex工程的**CustomWeexModuleViewController**
+
 
 
 References
@@ -277,3 +392,8 @@ References
 [^2]: https://www.cnblogs.com/liangqihui/p/6866556.html
 
 [^3]: http://weex.apache.org/cn/references/components/index.html 
+[^4]: http://weex.apache.org/cn/wiki/module-introduction.html 
+[^5]: https://juejin.im/post/5ac495046fb9a028ca5330f8 
+
+
+

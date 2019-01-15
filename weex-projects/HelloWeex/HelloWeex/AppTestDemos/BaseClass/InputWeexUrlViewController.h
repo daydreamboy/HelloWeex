@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WeexInputUrlViewController : UIViewController
+@interface InputWeexUrlViewController : UIViewController
 
 
 @end

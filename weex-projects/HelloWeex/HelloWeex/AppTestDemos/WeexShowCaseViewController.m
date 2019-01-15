@@ -10,7 +10,7 @@
 #import <WeexSDK/WeexSDK.h>
 
 @interface WeexShowCaseViewController ()
-@property (nonatomic, strong) WXSDKInstance *weexSDK;
+@property (nonatomic, strong) WXSDKInstance *weexInstance;
 @property (nonatomic, strong) NSString *weexUrl;
 @end
 
@@ -28,37 +28,37 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    self.weexSDK.viewController = self;
-    self.weexSDK.frame = CGRectMake(0, 64, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 64);
+    self.weexInstance.viewController = self;
+    self.weexInstance.frame = CGRectMake(0, 64, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 64);
     
-    [self.weexSDK renderWithURL:[NSURL URLWithString:self.weexUrl]];
+    [self.weexInstance renderWithURL:[NSURL URLWithString:self.weexUrl]];
     
     __weak typeof(self) weakSelf = self;
-    self.weexSDK.onCreate = ^(UIView *view) {
+    self.weexInstance.onCreate = ^(UIView *view) {
         NSLog(@"weexSDK onCreate");
         [weakSelf.view addSubview:view];
     };
     
-    self.weexSDK.renderFinish = ^(UIView *view) {
+    self.weexInstance.renderFinish = ^(UIView *view) {
         NSLog(@"weexSDK renderFinish");
     };
     
-    self.weexSDK.onFailed = ^(NSError *error) {
+    self.weexInstance.onFailed = ^(NSError *error) {
         NSLog(@"weexSDK onFailed : %@\n", error);
     };
 }
 
 - (void)dealloc {
-    [_weexSDK destroyInstance];
+    [_weexInstance destroyInstance];
 }
 
 #pragma mark - Getters
 
-- (WXSDKInstance *)weexSDK {
-    if (!_weexSDK) {
-        _weexSDK = [WXSDKInstance new];
+- (WXSDKInstance *)weexInstance {
+    if (!_weexInstance) {
+        _weexInstance = [WXSDKInstance new];
     }
-    return _weexSDK;
+    return _weexInstance;
 }
 
 @end

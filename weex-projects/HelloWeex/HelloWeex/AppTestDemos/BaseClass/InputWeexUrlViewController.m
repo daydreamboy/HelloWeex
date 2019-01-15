@@ -6,16 +6,17 @@
 //
 //
 
-#import "WeexInputUrlViewController.h"
+#import "InputWeexUrlViewController.h"
 #import "WeexShowCaseViewController.h"
 
-@interface WeexInputUrlViewController () <UITextFieldDelegate>
+@interface InputWeexUrlViewController () <UITextFieldDelegate>
 @property (nonatomic, strong) UILabel *labelTip;
 @property (nonatomic, strong) UITextField *textFieldUrl;
 @property (nonatomic, strong) UIButton *buttonShowWeex;
+@property (nonatomic, strong) UIButton *buttonPaste;
 @end
 
-@implementation WeexInputUrlViewController
+@implementation InputWeexUrlViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,6 +25,7 @@
     [self.view addSubview:self.labelTip];
     [self.view addSubview:self.textFieldUrl];
     [self.view addSubview:self.buttonShowWeex];
+    [self.view addSubview:self.buttonPaste];
 }
 
 #pragma mark - Getters
@@ -64,7 +66,7 @@
         CGSize screenSize = [[UIScreen mainScreen] bounds].size;
         
         UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
-        [button setTitle:@"open url" forState:UIControlStateNormal];
+        [button setTitle:@"Open url" forState:UIControlStateNormal];
         [button sizeToFit];
         button.center = CGPointMake((screenSize.width - CGRectGetWidth(button.bounds)) / 2.0, CGRectGetMaxY(self.textFieldUrl.frame) + CGRectGetHeight(button.bounds) / 2.0 + 10);
         [button addTarget:self action:@selector(buttonShowWeexClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -73,6 +75,22 @@
     }
     
     return _buttonShowWeex;
+}
+
+- (UIButton *)buttonPaste {
+    if (!_buttonPaste) {
+        CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+        
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+        [button setTitle:@"Paste url" forState:UIControlStateNormal];
+        [button sizeToFit];
+        button.center = CGPointMake((screenSize.width - CGRectGetWidth(button.bounds)) / 2.0, CGRectGetMaxY(self.buttonShowWeex.frame) + CGRectGetHeight(button.bounds) / 2.0 + 10);
+        [button addTarget:self action:@selector(buttonPasteClicked:) forControlEvents:UIControlEventTouchUpInside];
+        
+        _buttonPaste = button;
+    }
+    
+    return _buttonPaste;
 }
 
 #pragma mark - UITextFieldDelegate
@@ -98,6 +116,10 @@
     
     WeexShowCaseViewController *vc = [[WeexShowCaseViewController alloc] initWithWeexUrl:url];
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)buttonPasteClicked:(id)sender {
+    self.textFieldUrl.text = [UIPasteboard generalPasteboard].string;
 }
 
 @end
