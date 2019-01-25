@@ -431,7 +431,7 @@ index.css
 
 ## 5、Rax组件
 
-#### （1）安装组件
+### （1）安装组件
 
 Rax的[Git主页](https://github.com/alibaba/rax)，除了提供rax-cli命令行工具，还提供一些rax组件，每个rax组件是一个npm包，如下
 
@@ -443,7 +443,7 @@ Rax的[Git主页](https://github.com/alibaba/rax)，除了提供rax-cli命令行
 
 
 
-#### （2）网络请求组件
+### （2）网络请求组件
 
 网络请求可以使用rax库内置的fetch函数，或者使用jsonp库的jsonp函数
 
@@ -514,7 +514,7 @@ render(<NetworkJSONP />);
 
 
 
-#### （3）文本组件\<Text/\>
+### （3）文本组件\<Text/\>
 
 \<Text\>\<Text/\>标签会被转成\<span\>\</span\>
 
@@ -525,7 +525,7 @@ render(<NetworkJSONP />);
 使用rax-cli提供的rax命令，`rax init <project name>`，初始化一个Rax项目，如下
 
 ```shell
-rax git:(daily/0.0.1) ✗ tree -L 2
+$ tree -L 2
 .
 ├── README.md
 ├── abc.json
@@ -566,27 +566,17 @@ rax git:(daily/0.0.1) ✗ tree -L 2
 >
 也可以使用def工具的`def init`命令
 
+
+
 几个重要文件夹，简单介绍下
 
-* node_modules
-
-项目所需要库的存放文件夹，类似CocoaPods的Pods文件夹。一般Rax项目初始化后，有一些基础库，例如rax、rax-text等。如果还需要其他的库，可以使用`npm install <rax library>`，npm 5.0版本不需要使用`--save`选项[^1]
-
-* package.json
-
-项目所需要库的记录文件，类似CocoaPods的Podfile文件。使用npm来安装或卸载等，会自动更新该文件，因此一般不需要手动修改该文件。
-
-* package-lock.json
-
-根据文件名称，猜测和Podfile.lock文件的作用有点像
-
-* src/mods
-
-存放模块代码的文件夹。`def add`添加模块，会在此文件夹下添加对应的一些文件
-
-* src/pages
-
-存放页面代码的文件夹。`def add`添加页面，会在此文件夹下添加对应的一些文件
+| 文件夹/文件       | 作用                                                         |
+| ----------------- | ------------------------------------------------------------ |
+| node_modules      | 项目所需要库的存放文件夹，类似CocoaPods的Pods文件夹。一般Rax项目初始化后，有一些基础库，例如rax、rax-text等。如果还需要其他的库，可以使用`npm install <rax library>`，npm 5.0版本不需要使用`--save`选项[^1] |
+| package.json      | 项目所需要库的记录文件，类似CocoaPods的Podfile文件。使用npm来安装或卸载等，会自动更新该文件，因此一般不需要手动修改该文件。 |
+| package-lock.json | 根据文件名称，猜测和Podfile.lock文件的作用有点像             |
+| src/mods          | 存放模块代码的文件夹。`def add`添加模块，会在此文件夹下添加对应的一些文件 |
+| src/pages         | 存放页面代码的文件夹。`def add`添加页面，会在此文件夹下添加对应的一些文件 |
 
 
 
