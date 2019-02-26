@@ -15,8 +15,8 @@
 		4F26FD411FC029D5002A28AF /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F26FD3F1FC029D5002A28AF /* RootViewController.m */; };
 		4F26FD441FC02E0A002A28AF /* WeexShowCaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F26FD431FC02E0A002A28AF /* WeexShowCaseViewController.m */; };
 		4F26FD471FC036AC002A28AF /* WeexImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F26FD461FC036AC002A28AF /* WeexImageDownloader.m */; };
-		4F51826621EDF7EC0070B3A3 /* CustomWeexModuleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F51826421EDF7EC0070B3A3 /* CustomWeexModuleViewController.m */; };
 		4F51826A21EDFB2C0070B3A3 /* MyCustomWeexModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F51826921EDFB2C0070B3A3 /* MyCustomWeexModule.m */; };
+		4F7E2D812224093D007D190E /* WCAlertTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7E2D802224093D007D190E /* WCAlertTool.m */; };
 		5838EDBA238772C5F32C002E /* libPods-HelloWeex.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FC9BCD9D688CDE678028F76 /* libPods-HelloWeex.a */; };
 /* End PBXBuildFile section */
 
@@ -36,10 +36,10 @@
 		4F26FD431FC02E0A002A28AF /* WeexShowCaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeexShowCaseViewController.m; sourceTree = "<group>"; };
 		4F26FD451FC036AC002A28AF /* WeexImageDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeexImageDownloader.h; sourceTree = "<group>"; };
 		4F26FD461FC036AC002A28AF /* WeexImageDownloader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeexImageDownloader.m; sourceTree = "<group>"; };
-		4F51826421EDF7EC0070B3A3 /* CustomWeexModuleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomWeexModuleViewController.m; sourceTree = "<group>"; };
-		4F51826521EDF7EC0070B3A3 /* CustomWeexModuleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomWeexModuleViewController.h; sourceTree = "<group>"; };
 		4F51826821EDFB2C0070B3A3 /* MyCustomWeexModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCustomWeexModule.h; sourceTree = "<group>"; };
 		4F51826921EDFB2C0070B3A3 /* MyCustomWeexModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCustomWeexModule.m; sourceTree = "<group>"; };
+		4F7E2D7F2224093D007D190E /* WCAlertTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCAlertTool.h; sourceTree = "<group>"; };
+		4F7E2D802224093D007D190E /* WCAlertTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCAlertTool.m; sourceTree = "<group>"; };
 		62EBEA88433488D185608C24 /* Pods-HelloWeex.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloWeex.release.xcconfig"; path = "Pods/Target Support Files/Pods-HelloWeex/Pods-HelloWeex.release.xcconfig"; sourceTree = "<group>"; };
 		6FC9BCD9D688CDE678028F76 /* libPods-HelloWeex.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HelloWeex.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0D128B0EE06BF7403C3B112 /* Pods-HelloWeex.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloWeex.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HelloWeex/Pods-HelloWeex.debug.xcconfig"; sourceTree = "<group>"; };
@@ -96,9 +96,9 @@
 		4F26FD3B1FC029CC002A28AF /* AppTestDemos */ = {
 			isa = PBXGroup;
 			children = (
-				4F51826B21EDFE4C0070B3A3 /* BaseClass */,
-				4F51826521EDF7EC0070B3A3 /* CustomWeexModuleViewController.h */,
-				4F51826421EDF7EC0070B3A3 /* CustomWeexModuleViewController.m */,
+				4F7E2D7E22240925007D190E /* Tools */,
+				4F26FD3C1FC029CC002A28AF /* InputWeexUrlViewController.h */,
+				4F26FD3D1FC029CC002A28AF /* InputWeexUrlViewController.m */,
 				4F26FD421FC02E0A002A28AF /* WeexShowCaseViewController.h */,
 				4F26FD431FC02E0A002A28AF /* WeexShowCaseViewController.m */,
 			);
@@ -123,13 +123,13 @@
 			path = WeexHandler;
 			sourceTree = "<group>";
 		};
-		4F51826B21EDFE4C0070B3A3 /* BaseClass */ = {
+		4F7E2D7E22240925007D190E /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				4F26FD3C1FC029CC002A28AF /* InputWeexUrlViewController.h */,
-				4F26FD3D1FC029CC002A28AF /* InputWeexUrlViewController.m */,
+				4F7E2D7F2224093D007D190E /* WCAlertTool.h */,
+				4F7E2D802224093D007D190E /* WCAlertTool.m */,
 			);
-			path = BaseClass;
+			path = Tools;
 			sourceTree = "<group>";
 		};
 		5C0AFA0AECCB3B1E178A6398 /* Frameworks */ = {
@@ -268,8 +268,8 @@
 				4F26FD471FC036AC002A28AF /* WeexImageDownloader.m in Sources */,
 				4F26FD441FC02E0A002A28AF /* WeexShowCaseViewController.m in Sources */,
 				4F26FD411FC029D5002A28AF /* RootViewController.m in Sources */,
-				4F51826621EDF7EC0070B3A3 /* CustomWeexModuleViewController.m in Sources */,
 				4F51826A21EDFB2C0070B3A3 /* MyCustomWeexModule.m in Sources */,
+				4F7E2D812224093D007D190E /* WCAlertTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

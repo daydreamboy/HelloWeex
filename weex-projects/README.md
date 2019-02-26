@@ -303,7 +303,9 @@ WX_EXPORT_METHOD(@selector(showParam:callback:))
     formatter.timeStyle = NSDateFormatterShortStyle;
     NSLog(@"%@ (%@): %@", self, NSStringFromSelector(_cmd), param);
     NSString *string = [NSString stringWithFormat:@"iOS on %@", [formatter stringFromDate:[NSDate date]]];
-    callback(string, YES);
+    if (callback) {
+    	callback(string, YES);
+    }
 }
 
 @end
@@ -342,7 +344,11 @@ WX_EXPORT_METHOD(@selector(showParam:callback:))
 
 #### b. JS框架导入module
 
-使用`require('@weex-module/<module name>')`导入native定义好的module。
+使用`require('@weex-module/<module name>')`导入native中定义好的而且注册过的weex module。
+
+
+
+
 
 以rax框架为例，举个例子，如下
 

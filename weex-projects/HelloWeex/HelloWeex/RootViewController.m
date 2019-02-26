@@ -9,7 +9,6 @@
 #import "RootViewController.h"
 
 #import "InputWeexUrlViewController.h"
-#import "CustomWeexModuleViewController.h"
 
 @interface RootViewController ()
 @property (nonatomic, strong) NSArray *titles;
@@ -33,11 +32,9 @@
     // MARK: Configure titles and classes for table view
     _titles = @[
         @"Open Weex Url",
-        @"Custom Weex module",
     ];
     _classes = @[
         [InputWeexUrlViewController class],
-        [CustomWeexModuleViewController class],
     ];
 }
 

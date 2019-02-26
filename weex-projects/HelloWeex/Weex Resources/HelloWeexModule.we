@@ -13,20 +13,28 @@
 
 <!-- Note: style for render -->
 <style>
-  .title {
-    color: red;
-  }
+.title {
+  color: red;
+}
 </style>
 
 <!-- Note: script for interaction -->
 <script>
-  module.exports = {
-    methods: {
-      onClickTitle: function(e) {
-        console.log(e);
-        console.log("test");
-        alert("title clicked.");
-      }
+var event = require('@weex-module/event');
+event.showParam('A param string from JS');
+
+module.exports = {
+  methods: {
+    onClickTitle: function(e) {
+      console.log(e);
+      console.log('test');
+      alert('title clicked.');
     }
-  };
+  }
+};
+
+// event.openURL('http://baidu.com');
+// event.openURL2('http://baidu.com');
+event.showParam('A param string from JS');
+// event.showParam({name: "A param string from JS"});
 </script>
