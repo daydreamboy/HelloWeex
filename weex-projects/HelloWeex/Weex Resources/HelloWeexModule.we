@@ -1,12 +1,12 @@
 <!-- Note: template for layout -->
 <template>
-  <div>
+  <div class="container">
+    <text>Use Weex Module</text>
     <image
       class="thumbnail"
       style="width:120px;height:120px"
       src="http://image.coolapk.com/apk_logo/2015/0817/257251_1439790718_385.png"
-    ></image>
-    <text>Hello Weex</text>
+    />
     <text class="title" onclick="onClickTitle">Click Me</text>
   </div>
 </template>
@@ -16,25 +16,44 @@
 .title {
   color: red;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 </style>
 
 <!-- Note: script for interaction -->
 <script>
 var event = require('@weex-module/event');
-event.showParam('A param string from JS');
+
+var loadParam = {'navTitle':'Use Weex Module'};
+
+event.onLoad(loadParam, (response) => {
+  console.log(event);
+});
+
+event.alert('button click event', '123', (response) => {
+  console.log(response);
+      });
 
 module.exports = {
   methods: {
     onClickTitle: function(e) {
       console.log(e);
       console.log('test');
-      alert('title clicked.');
+      // alert('title clicked.');
+      // event.alert('button click event', (response) => {
+
+      // });
     }
   }
 };
 
 // event.openURL('http://baidu.com');
 // event.openURL2('http://baidu.com');
-event.showParam('A param string from JS');
+// event.showParam('A param string from JS');
 // event.showParam({name: "A param string from JS"});
 </script>

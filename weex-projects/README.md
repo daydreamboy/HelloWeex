@@ -22,13 +22,13 @@
 
 
 
-## 2、Weex的HelloWorld示例
+## 2、搭建Weex开发环境
 
 以iOS平台上的HelloWorld程序来示例Weex的开发过程。
 
 
 
-### （1）建立Weex环境[^1]
+### （1）准备Weex环境[^1]
 
 Weex的命令行工具都是基于node.js的，所以需要安装node
 
@@ -82,7 +82,7 @@ pod 'WeexSDK'
 
 
 
-### （3）准备服务端DSL文件
+### （3）部署服务端DSL文件
 
 DSL文件就是Vue.js文件或者Rax文件。Weex要求DSL文件后缀名为`.we`
 
@@ -143,9 +143,9 @@ $ weex helloweex.we
 
 
 
-### （4）建立Weex视图[^2]
+### （4）获取Weex视图[^2]
 
-iOS客户端集成WeexSDK后，完成下面几个步骤
+iOS客户端集成WeexSDK后，完成下面几个步骤接入WeexSDK的API。
 
 
 
@@ -229,7 +229,7 @@ WeexSDK初始化只需一次。
 
 
 
-### 5. Other Weex Tips
+### 5. Other Weex Tips（TODO）
 
 #### 5.1 创建weex模板工程
 
@@ -244,9 +244,15 @@ WeexSDK初始化只需一次。
 
 
 
+这里介绍Weex中常用几个概念。
+
+
+
 ### （1）组件（component）
 
-Weex组件（component）对应的是DSL的标签。Weex有下面一些内置组件[^3]。
+这里的组件（component）指的是采用Weex语法（Weex DSL）中的标签。
+
+Weex有下面一些内置组件[^3]。
 
 - [`<div>`](http://weex.apache.org/cn/references/components/div.html)
 - [`<image>`](http://weex.apache.org/cn/references/components/image.html)
@@ -270,21 +276,37 @@ Weex组件（component）对应的是DSL的标签。Weex有下面一些内置组
 
 ### （2）模块（module）
 
-Weex模块（后面称**Weex module**），是native端向WeexSDK注册一个类，并把一些native方法暴露给前端使用。
+​     Weex模块（后面称**Weex Module**），是native端向WeexSDK注册一个类，并把一些native方法暴露给前端使用。
 
 官方提供的Weex module注册流程[^4]，如下
 
 ![](images/Weex module注册流程.png)
 
-根据上面流程，可见weex module涉及到native和JS框架两部分。
+根据上面流程，可见Weex Module是Native和JS框架这两部分的桥接。
 
 
 
-#### a. native实现weex module
+#### 使用Weex Module
 
-​       iOS上实现weex module，需要两个步骤：定义Weex Module类，注册Weex Module类
 
-##### 1. 定义Weex Module类
+
+使用Weex Module涉及到Native和JS两侧的开发。
+
+* Native侧（以iOS上实现weex module为例）
+  * 定义Weex Module类，以及导出方法
+  * 注册Weex Module类
+
+* JS侧
+  * require语法导入Weex Module
+  * Weex Module实例调用导出函数（该函数实现在Native侧）
+
+
+
+#### Weex Module示例
+
+
+
+#### 定义Weex Module类
 
 ​       Weex Module类实现`WXModuleProtocol`协议，使用`WX_EXPORT_METHOD`宏将需要暴露给JS框架的方法（后面称为**Weex module方法**）标记出来。
 

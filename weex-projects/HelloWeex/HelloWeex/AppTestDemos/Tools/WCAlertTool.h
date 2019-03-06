@@ -27,6 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (void)presentActionSheetWithTitle:(NSString *)title message:(nullable NSString *)message buttonTitles:(NSArray<NSString *> *)buttonTitles buttonDidClickBlocks:(NSArray *)buttonDidClickBlocks;
 
++ (void)presentAlertWithTitle:(NSString *)title message:(nullable NSString *)message buttonTitles:(NSArray<NSString *> *)buttonTitles buttonDidClickBlocks:(NSArray *)buttonDidClickBlocks;
+
 @end
 
 @interface WCBlockTool : NSObject

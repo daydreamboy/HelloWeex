@@ -15,6 +15,11 @@
             ];
 }
 
++ (void)presentAlertWithTitle:(NSString *)title message:(nullable NSString *)message buttonTitles:(NSArray<NSString *> *)buttonTitles buttonDidClickBlocks:(NSArray *)buttonDidClickBlocks {
+    return [self presentAlertWithStyle:UIAlertControllerStyleAlert title:title message:message buttonTitles:buttonTitles buttonDidClickBlocks:buttonDidClickBlocks
+            ];
+}
+
 #pragma mark > Both
 
 + (void)presentAlertWithStyle:(UIAlertControllerStyle)style title:(NSString *)title message:(nullable NSString *)message buttonTitles:(NSArray<NSString *> *)buttonTitles buttonDidClickBlocks:(NSArray *)buttonDidClickBlocks {

@@ -7,6 +7,7 @@
 //
 
 #import "MyCustomWeexModule.h"
+#import "WCAlertTool.h"
 
 @implementation MyCustomWeexModule
 
@@ -23,6 +24,31 @@ WX_EXPORT_METHOD(@selector(showParam:callback:))
         callback(string, YES);
     }
 }
+
+WX_EXPORT_METHOD(@selector(onLoad:callback:))
+- (void)onLoad:(NSDictionary *)param callback:(WXModuleKeepAliveCallback)callback {
+    self.weexInstance.viewController.title = param[@"navTitle"];
+}
+
+WX_EXPORT_METHOD(@selector(alert:message:callback:))
+- (void)alert:(NSString *)title message:(NSString *)message callback:(WXModuleKeepAliveCallback)callback {
+    
+    NSArray *buttonTitles = @[
+                              @"Cancel"
+                              ];
+    
+    NSMutableArray *blocks = [NSMutableArray array];
+    [blocks addObject:^{
+        NSLog(@"Cancel clicked");
+    }];
+    
+    [WCAlertTool presentAlertWithTitle:title message:message buttonTitles:buttonTitles buttonDidClickBlocks:blocks];
+    
+    if (callback) {
+        callback(@"OK", YES);
+    }
+}
+
 
 WX_EXPORT_METHOD(@selector(openURL:))
 - (void)openURL:(NSString *)URL {
