@@ -1,55 +1,54 @@
 <!-- Note: template for layout -->
 <template>
-  <div class="container">
-    <text>Use Weex Module</text>
-    <image
-      class="thumbnail"
-      style="width:120px;height:120px"
-      src="http://image.coolapk.com/apk_logo/2015/0817/257251_1439790718_385.png"
-    />
-    <text class="title" onclick="onClickTitle">Click Me</text>
-  </div>
+    <div class="container">
+        <text>Use Weex Module</text>
+        <image
+            class="thumbnail"
+            style="width:120px;height:120px"
+            src="http://image.coolapk.com/apk_logo/2015/0817/257251_1439790718_385.png"
+        >
+        <text class="title" onclick="onClickTitle">Click Me</text>
+    </div>
 </template>
 
 <!-- Note: style for render -->
 <style>
 .title {
-  color: red;
+    color: red;
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-
 </style>
 
 <!-- Note: script for interaction -->
 <script>
-var event = require('@weex-module/event');
+var event = require("@weex-module/event");
 
-var loadParam = {'navTitle':'Use Weex Module'};
+var loadParam = { navTitle: "Use Weex Module" };
 
-event.onLoad(loadParam, (response) => {
-  console.log(event);
+event.onLoad(loadParam, response => {
+    console.log(event);
 });
 
-event.alert('button click event', '123', (response) => {
-  console.log(response);
-      });
+event.alert("button click event", "123", response => {
+    console.log(response);
+});
 
 module.exports = {
-  methods: {
-    onClickTitle: function(e) {
-      console.log(e);
-      console.log('test');
-      // alert('title clicked.');
-      // event.alert('button click event', (response) => {
+    methods: {
+        onClickTitle: function(e) {
+            console.log(e);
+            console.log("test");
+            // alert('title clicked.');
+            // event.alert('button click event', (response) => {
 
-      // });
+            // });
+        }
     }
-  }
 };
 
 // event.openURL('http://baidu.com');
