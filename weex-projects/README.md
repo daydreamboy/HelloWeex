@@ -290,13 +290,13 @@ Weex有下面一些内置组件[^3]。
 
 
 
-使用Weex Module涉及到Native和JS两侧的开发。
+使用Weex Module涉及到Native和JavaScript两侧的开发。
 
 * Native侧（以iOS上实现weex module为例）
   * 定义Weex Module类，以及导出方法
   * 注册Weex Module类
 
-* JS侧
+* JavaScript侧
   * require语法导入Weex Module
   * Weex Module实例调用导出函数（该函数实现在Native侧）
 
@@ -306,7 +306,7 @@ Weex有下面一些内置组件[^3]。
 
 
 
-#### 定义Weex Module类
+##### 定义Weex Module类
 
 ​       Weex Module类实现`WXModuleProtocol`协议，使用`WX_EXPORT_METHOD`宏将需要暴露给JS框架的方法（后面称为**Weex module方法**）标记出来。
 
@@ -352,7 +352,7 @@ WX_EXPORT_METHOD(@selector(showParam:callback:))
 
 
 
-##### 2. 注册Weex Module类
+##### 注册Weex Module类
 
 ​       使用WXSDKEngine的`+[WXSDKEngine registerModule:withClass:]`方法注册Weex Module类。定义module名字，这个名字在JS框架会使用。
 
@@ -364,11 +364,9 @@ WX_EXPORT_METHOD(@selector(showParam:callback:))
 
 
 
-#### b. JS框架导入module
+##### JS框架导入module
 
 使用`require('@weex-module/<module name>')`导入native中定义好的而且注册过的weex module。
-
-
 
 
 
@@ -410,6 +408,8 @@ class App extends Component {
 
 > 1. JS框架的console.log方法在native console上以`2019-01-15 21:28:04.578052+0800 HelloWeex[34440:641597] <Weex>[log]WXJSCoreBridge.m:145, jsLog: XXX`形式打印出来，可以搜索jsLog关键词
 > 2. 示例代码见HelloWeex工程的**CustomWeexModuleViewController**
+
+
 
 
 

@@ -34,7 +34,7 @@ event.onLoad(loadParam, response => {
     console.log(event);
 });
 
-event.alert("button click event", "123", response => {
+event.alert("page load event", "param1", response => {
     console.log(response);
 });
 
@@ -42,11 +42,9 @@ module.exports = {
     methods: {
         onClickTitle: function(e) {
             console.log(e);
-            console.log("test");
-            // alert('title clicked.');
-            // event.alert('button click event', (response) => {
+            event.alert('button click event', "param2", (response) => {
 
-            // });
+            });
         }
     }
 };
